@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Performance Stocks</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+    />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+  <body>
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1>Enter a Performing Stock</h1>
+
+      <form action="save" method="POST">
+        <div id="name-group" class="form-group">
+          <label for="quarter">Quarter</label>
+          <input
+            type="text"
+            class="form-control"
+            id="quarter"
+            name="quarter"
+            placeholder="Enter quarter"
+          />
+        </div>
+
+        <div id="name" class="form-group">
+          <label for="name">name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Enter name"
+          />
+        </div>
+
+        <div id="date" class="form-group">
+          <label for="date">Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date"
+            name="date"
+            placeholder=""
+          />
+        </div>
+
+        <button type="submit" class="btn btn-success">
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

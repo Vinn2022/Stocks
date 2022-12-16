@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Performance Stocks</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+<body>
+	<div class="col-sm-6 col-sm-offset-3">
+
+		<div align="center">
+			<h1>Upload the data file</h1>
+			<form method="post" action="" enctype="multipart/form-data"
+				id="myform">
+
+				<div class="form-group">
+					<input type="file" id="file" name="file" /> <input type="button"
+						class="button" value="Upload" id="but_upload">
+				</div>
+			</form>
+		</div>
+
+		<h1 align="center">
+			Or
+			<h1>
+
+				<h1>Enter a Performing Stock</h1>
+
+				<form id="stockPerformanceForm" action=''>
+					<div id="name-group" class="form-group">
+						<label for="quarter">Quarter</label> <input type="text"
+							class="form-control" id="quarter" name="quarter"
+							placeholder="Enter quarter" />
+					</div>
+
+					<div id="stock" class="form-group">
+						<label for="stock">Stock</label> <input type="text"
+							class="form-control" id="stock" name="stock"
+							placeholder="Enter stock" />
+					</div>
+
+					<div id="date" class="form-group">
+						<label for="date">Date</label> <input type="date"
+							class="form-control" id="date" name="date" placeholder="" />
+					</div>
+
+					<div id="open" class="form-group">
+						<label for="open">Open $</label> <input type="number"
+							class="form-control" id="open" name="open" placeholder="" />
+					</div>
+
+					<div id="high" class="form-group">
+						<label for="high">High $</label> <input type="number"
+							class="form-control" id="high" name="high" placeholder="" />
+					</div>
+
+					<div id="low" class="form-group">
+						<label for="low">Low $</label> <input type="number"
+							class="form-control" id="low" name="low" placeholder="" />
+					</div>
+
+					<div id="close" class="form-group">
+						<label for="close">Close $</label> <input type="number"
+							class="form-control" id="close" name="close" placeholder="" />
+					</div>
+
+					<div id="volume" class="form-group">
+						<label for="volume">volume $</label> <input type="number"
+							class="form-control" id="volume" name="volume" placeholder="" />
+					</div>
+
+					<div id="percent_change_price" class="form-group">
+						<label for="percent_change_price">percent_change_price $</label> <input
+							type="number" class="form-control" id="percent_change_price"
+							name="percent_change_price" placeholder="" />
+					</div>
+
+					<div id="percent_change_volume_over_last_wk" class="form-group">
+						<label for="percent_change_volume_over_last_wk">percent_change_volume_over_last_wk
+							$</label> <input type="number" class="form-control"
+							id="percent_change_volume_over_last_wk"
+							name="percent_change_volume_over_last_wk" placeholder="" />
+					</div>
+
+					<div id="previous_weeks_volume" class="form-group">
+						<label for="previous_weeks_volume">previous_weeks_volume $</label>
+						<input type="number" class="form-control"
+							id="previous_weeks_volume" name="previous_weeks_volume"
+							placeholder="" />
+					</div>
+
+					<div id="next_weeks_open" class="form-group">
+						<label for="next_weeks_open">next_weeks_open $</label> <input
+							type="number" class="form-control" id="next_weeks_open"
+							name="next_weeks_open" placeholder="" />
+					</div>
+
+					<div id="next_weeks_close" class="form-group">
+						<label for="next_weeks_close">next_weeks_close $</label> <input
+							type="number" class="form-control" id="next_weeks_close"
+							name="next_weeks_close" placeholder="" />
+					</div>
+
+					<div id="percent_change_next_weeks_price" class="form-group">
+						<label for="percent_change_next_weeks_price">percent_change_next_weeks_price
+							$</label> <input type="number" class="form-control"
+							id="percent_change_next_weeks_price"
+							name="percent_change_next_weeks_price" placeholder="" />
+					</div>
+
+					<div id="days_to_next_dividend" class="form-group">
+						<label for="days_to_next_dividend">days_to_next_dividend $</label>
+						<input type="number" class="form-control"
+							id="days_to_next_dividend" name="days_to_next_dividend"
+							placeholder="" />
+					</div>
+
+					<div id="percent_return_next_dividend" class="form-group">
+						<label for="percent_return_next_dividend">percent_return_next_dividend
+							$</label> <input type="number" class="form-control"
+							id="percent_return_next_dividend"
+							name="percent_return_next_dividend" placeholder="" />
+					</div>
+
+					<button type="submit" class="btn btn-success">Submit</button>
+				</form>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#but_upload").click(function() {
+				var fd = new FormData();
+				var files = $('#file')[0].files[0];
+				fd.append('file', files);
+
+				$.ajax({
+					url : '/api/stock-performance/upload',
+					type : 'post',
+					data : fd,
+					contentType : false,
+					processData : false,
+					success : function(response) {
+						if (response != 0) {
+							alert('file uploaded');
+						} else {
+							alert('file not uploaded');
+						}
+					},
+				});
+			});
+			
+			$("submit").click(function (event) {
+				
+				alert("qawdjasd")
+			    var formData = {
+			    		
+			    		quarter: $("#quarter").val(),
+			    		stock: $("#stock").val(),
+			    		date: $("#date").val(),
+			    		open: $("#open").val(),
+			    		high: $("#high").val(),
+			    		low: $("#low").val(),
+			    		close: $("#close").val(),
+			    		volume: $("#volume").val(),
+			    		percentChangePrice: $("#percent_change_price").val(),
+			   			percentChangeVolumeLastWk: $("#percent_change_volume_over_last_wk").val(),
+			    		previousWeekVol: $("#previous_weeks_volume").val(),
+			    		nextWeekOpen: $("#next_weeks_open").val(),
+			    		nextWeekClose: $("#next_weeks_close").val(),
+			    		percentChangeNxtWkPrice: $("#percent_change_next_weeks_price").val(),
+			   			daysToNxtDvnd: $("#days_to_next_dividend").val(),
+			    		percentReturnNxtDvnd: $("#percent_return_next_dividend").val()
+			    };
+
+			    alert("ok")
+			    $.ajax({
+			      type: "POST",
+			      url: "/api/stock-performance/save",
+			      data: formData,
+			      dataType: "json",
+			      encode: true,
+			      success : function(response) {
+						if (response != 0) {
+							alert('new id is'+response);
+						} else {
+							alert('Creation failed');
+						}
+					},
+			    }).done(function (data) {
+			      console.log(data);
+			    });
+
+			    event.preventDefault();
+			  });
+			
+			
+		});
+		
+		
+		
+	</script>
+
+</body>
+</html>
